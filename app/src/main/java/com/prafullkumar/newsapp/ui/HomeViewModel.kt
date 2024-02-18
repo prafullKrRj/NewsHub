@@ -21,6 +21,7 @@ class HomeViewModel @Inject constructor(
     private val _counter by lazy { MutableStateFlow(0) }
     val counter: StateFlow<Int> = _counter.asStateFlow()
 
+
     init {
         viewModelScope.launch(context = Dispatchers.IO) {
             for (i in 1..10) {
