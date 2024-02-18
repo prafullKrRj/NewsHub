@@ -4,6 +4,14 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.10" apply false
     id("com.google.dagger.hilt.android") version "2.49" apply false
 }
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7")
+    }
+}
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
