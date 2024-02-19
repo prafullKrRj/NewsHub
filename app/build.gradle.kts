@@ -31,6 +31,7 @@ android {
     }
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -42,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     val hiltVersion = "2.49"
     val retrofitVersion = "2.9.0"
     val livedataVersion = "2.7.0"
@@ -53,7 +55,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
     // LiveData
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:${livedataVersion}")
 
