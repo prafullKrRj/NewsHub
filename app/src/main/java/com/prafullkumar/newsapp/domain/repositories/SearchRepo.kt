@@ -4,7 +4,6 @@ import com.prafullkumar.newsapp.domain.Resource
 import com.prafullkumar.newsapp.domain.countryNewsDto.NewsDto
 import kotlinx.coroutines.flow.Flow
 
-interface HomeRepository {
-
-    suspend fun getNewsByCountry() : Flow<Resource<NewsDto>>
+interface SearchRepo {
+    suspend fun searchNews(query: String): Flow<Resource<NewsDto>>
 }

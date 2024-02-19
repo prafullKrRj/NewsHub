@@ -2,7 +2,7 @@ package com.prafullkumar.newsapp.domain.countryNewsDto
 
 import com.google.gson.annotations.SerializedName
 
-data class NewsCountryDto(
+data class NewsDto(
     @SerializedName("articles")
     val articles: List<Article>,
 
