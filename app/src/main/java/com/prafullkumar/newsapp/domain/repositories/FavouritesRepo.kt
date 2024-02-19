@@ -1,9 +1,9 @@
 package com.prafullkumar.newsapp.domain.repositories
 
-import androidx.lifecycle.LiveData
 import com.prafullkumar.newsapp.data.local.FavouriteEntity
+import kotlinx.coroutines.flow.Flow
 
 interface FavouritesRepo {
-    suspend fun getFavouritesFromDB(): LiveData<List<FavouriteEntity>>
+    fun getFavouritesFromDB(): Flow<List<FavouriteEntity>>
     suspend fun deleteFavouriteFromDB(favouriteEntity: FavouriteEntity)
 }

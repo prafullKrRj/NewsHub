@@ -1,32 +1,35 @@
 package com.prafullkumar.newsapp.ui.articleFragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.prafullkumar.newsapp.R
+import com.prafullkumar.newsapp.databinding.FragmentArticleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class ArticleFragment : Fragment() {
+@AndroidEntryPoint
+class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-    companion object {
-        fun newInstance() = ArticleFragment()
-    }
+    private val viewModel: ArticleViewModel by viewModels()
+    val  args: ArticleFragmentArgs by navArgs()
+    lateinit var binding: FragmentArticleBinding
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentArticleBinding.bind(view)
 
-    private lateinit var viewModel: ArticleViewModel
+        val article = args.article
+        binding.webView.apply {
+            webViewClient = WebViewClient()
+            article.url?.let { loadUrl(it) }
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_article, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ArticleViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.fab.setOnClickListener {
+            viewModel.saveArticle(article)
+        }
     }
 
 }

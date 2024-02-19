@@ -36,6 +36,8 @@
         android:id="@+id/articleFragment"
         android:name="com.prafullkumar.newsapp.ui.articleFragment.ArticleFragment"
         android:label="ArticleFragment"  >
-
+        <argument
+            android:name="article"
+            app:argType="com.prafullkumar.newsapp.domain.countryNewsDto.Article" />
     </fragment>
 </navigation>

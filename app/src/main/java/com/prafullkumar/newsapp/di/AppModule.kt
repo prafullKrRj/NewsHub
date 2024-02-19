@@ -11,6 +11,7 @@ import com.prafullkumar.newsapp.data.repositories.HomeRepositoriesImpl
 import com.prafullkumar.newsapp.data.repositories.SearchRepoImpl
 import com.prafullkumar.newsapp.domain.repositories.FavouritesRepo
 import com.prafullkumar.newsapp.domain.repositories.HomeRepository
+import com.prafullkumar.newsapp.domain.repositories.SearchRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -70,7 +71,7 @@ object AppModule {
     @Singleton
     fun providesSearchRepository(
         newsApiService: NewsApiService,
-    ): SearchRepoImpl {
+    ): SearchRepo {
         return SearchRepoImpl(newsApiService)
     }
 }
