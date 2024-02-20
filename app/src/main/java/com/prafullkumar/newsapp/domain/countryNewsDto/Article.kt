@@ -2,6 +2,7 @@ package com.prafullkumar.newsapp.domain.countryNewsDto
 
 import com.google.gson.annotations.SerializedName
 import com.prafullkumar.newsapp.data.local.FavouriteEntity
+import java.io.Serializable
 
 data class Article(
     @SerializedName("author")
@@ -17,7 +18,7 @@ data class Article(
     val publishedAt: String,
 
     @SerializedName("source")
-    val source: Source,
+    val source: Source?,
 
     @SerializedName("title")
     val title: String,
@@ -27,7 +28,7 @@ data class Article(
 
     @SerializedName("urlToImage")
     val urlToImage: String
-) {
+) : Serializable {
     fun toFavouriteEntity(): FavouriteEntity {
         return FavouriteEntity(
             author = author,

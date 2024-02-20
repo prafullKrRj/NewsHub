@@ -6,11 +6,11 @@ import retrofit2.http.Query
 
 interface NewsApiService {
 
-    @GET("/top-headlines/")
+    @GET("/v2/top-headlines")
     suspend fun getCountryNews(
         @Query("country") country: String,
         @Query("apiKey") apiKey: String,
-        @Query("page") page: Int = 1
+        @Query("page") page: Int
     ) : NewsDto
 
     @GET("/everything/")

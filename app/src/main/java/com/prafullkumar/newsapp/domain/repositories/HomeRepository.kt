@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
 
-    suspend fun getNewsByCountry() : Flow<Resource<NewsDto>>
+    suspend fun getNewsByCountry(page: Int) : Flow<Resource<NewsDto>>
 }

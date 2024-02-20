@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/news_nav_graph.xml"
-    app:startDestination="@id/favouriteFragment">
+    app:startDestination="@id/headlinesFragment">
 
     <fragment
         android:id="@+id/favouriteFragment"

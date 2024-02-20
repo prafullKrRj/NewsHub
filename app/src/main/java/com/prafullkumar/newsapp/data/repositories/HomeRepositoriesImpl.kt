@@ -1,5 +1,6 @@
 package com.prafullkumar.newsapp.data.repositories
 
+import android.util.Log
 import com.prafullkumar.newsapp.data.NewsApiService
 import com.prafullkumar.newsapp.domain.Resource
 import com.prafullkumar.newsapp.domain.countryNewsDto.NewsDto
@@ -14,12 +15,11 @@ class HomeRepositoriesImpl @Inject constructor(
     private val apiKey: String
 ) : HomeRepository {
 
-    
-    override suspend fun getNewsByCountry(): Flow<Resource<NewsDto>> {
+    override suspend fun getNewsByCountry(page: Int): Flow<Resource<NewsDto>> {
         return callbackFlow {
             trySend(Resource.Loading)
             try {
-                val response = newsApiService.getCountryNews("in", apiKey)
+                val response = newsApiService.getCountryNews("in", apiKey, page)
                 if (response.status != "ok") {
                     trySend(Resource.Error(Exception("An unknown error occurred")))
                 } else {
@@ -31,5 +31,4 @@ class HomeRepositoriesImpl @Inject constructor(
             awaitClose {}
         }
     }
-
 }

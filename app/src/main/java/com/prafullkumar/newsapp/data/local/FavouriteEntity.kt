@@ -17,13 +17,13 @@ data class FavouriteEntity(
     val title: String,
     val url: String,
     val urlToImage: String,
-    val source: Source
+    val source: Source?
 )
 
 class SourceTypeConverter {
     @TypeConverter
-    fun fromSource(source: Source): String {
-        return source.name
+    fun fromSource(source: Source?): String? {
+        return source?.name
     }
     @TypeConverter
     fun toSource(name: String): Source {
